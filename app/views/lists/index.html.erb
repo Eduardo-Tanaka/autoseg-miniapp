@@ -1,0 +1,20 @@
+<% @lists.each do |list| %>
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+        <%= list.titulo %>
+      </p>
+      <p>
+        <%= list.descricao %>
+      </p>
+      <p>
+        <%= list.publico %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Edit", edit_user_list_path(@user, list), class: "btn btn-sm btn-default form-control" %>
+      <%= link_to "Delete", [@user, list], method: :delete, data: { confirm: "Delete?" }, class: "btn btn-sm btn-default form-control" %>
+    </div>
+  </div>
+  <br/>
+<% end %>
