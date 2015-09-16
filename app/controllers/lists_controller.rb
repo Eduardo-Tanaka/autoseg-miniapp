@@ -15,8 +15,9 @@ class ListsController < ApplicationController
   def create
     @list = List.create(list_params)
     @list.user_id = @user.id
+
     if @list.save
-      redirect_to user_list_path(@user, @list), notice: "Lista Criada!"
+      redirect_to user_lists_path(@user, @list), notice: "Lista Criada!"
     else
       render :back
     end
@@ -32,7 +33,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to user_lists_path(@user, @list), notice: "Lista Atualizada!"
+      redirect_to edit_user_list_path(@user, @list), notice: "Lista Atualizada!"
     else
       render 'edit'
     end
@@ -46,11 +47,11 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:titulo, :descricao, :publico)
+    params.require(:list).permit(:titulo, :descricao, :publico, items_attributes: [:descricao])
   end
 
   def find_list
-    @list = List.find(params[:id])
+    @list = List.includes(:items).find(params[:id])
   end
 
   def find_user

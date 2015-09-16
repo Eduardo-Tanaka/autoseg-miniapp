@@ -7,6 +7,16 @@
     <%= f.input :publico %>
   </div>
 
+  <% @list.items.each do |item| %>
+    <p><%= item.descricao %></p>
+  <% end %>
+
+  <div>
+    <%= f.fields_for :items, Item.new do |ff| %>
+      <%= ff.input :descricao %>
+    <% end %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, "Salvar" %>
   </div>
