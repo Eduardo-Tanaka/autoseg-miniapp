@@ -11,13 +11,28 @@
     <p><%= item.descricao %></p>
   <% end %>
 
-  <div>
+  <div id="lista_tarefas">
     <%= f.fields_for :items, Item.new do |ff| %>
-      <%= ff.input :descricao %>
+      <%= ff.input :descricao, label: "Tarefa da Lista" %>
     <% end %>
   </div>
+
+  <p id="adicionar_tarefa">Adicionar Tarefas</p>
 
   <div class="form-actions">
     <%= f.button :submit, "Salvar" %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function(){
+    var i = 1;
+    $("#adicionar_tarefa").on("click", function(){
+      var clone = $("#list_items_attributes_0_descricao").clone();
+      clone.prop("id", "list_items_attributes_"+i+"_descricao");
+      clone.prop("name", "list[items_attributes]["+i+"][descricao]");
+      i++;
+      $("#lista_tarefas").append(clone);
+    })
+  });
+</script>
