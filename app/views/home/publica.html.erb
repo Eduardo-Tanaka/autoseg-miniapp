@@ -1,16 +1,20 @@
 <% @lists.each do |list| %>
-<div class="row">
-  <div class="col-md-8">
-    <p>
-      <%= list.titulo %>
-    </p>
-    <p>
-      <%= list.descricao %>
-    </p>
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+        <%= list.titulo %>
+      </p>
+      <p>
+        <%= list.descricao %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <% f = Favorito.where(list_id: list, user_id: @user).first %>
+      <% if f %>
+        <%= link_to "Remover", user_list_favorito_delete_path(@user, list, f.id), method: :delete, class: "btn btn-sm btn-default form-control" %>
+      <% else %>
+        <%= link_to "Favorito", user_list_favorito_path(@user, list), method: :post, class: "btn btn-sm btn-default form-control" %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-md-2">
-    <%= link_to "Edit", edit_user_list_path(@user, list), class: "btn btn-sm btn-default form-control" %>
-    <%= link_to "Delete", [@user, list], method: :delete, data: { confirm: "Delete?" }, class: "btn btn-sm btn-default form-control" %>
-  </div>
-</div>
 <% end %>

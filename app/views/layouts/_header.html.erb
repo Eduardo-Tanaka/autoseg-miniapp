@@ -18,6 +18,7 @@
           <li><%= link_to "Nova Lista", new_user_list_path(@user) %></li>
           <li><%= link_to "Minhas Listas", user_lists_path(@user) %></li>
           <li><%= link_to "Listas Públicas", publica_path %></li>
+          <li><%= link_to "Favoritos", user_favoritos_path(@user) %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

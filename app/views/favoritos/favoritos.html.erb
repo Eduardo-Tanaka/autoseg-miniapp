@@ -1,0 +1,18 @@
+<h1>Favoritos</h1>
+
+<% @lists.each do |list| %>
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+        <%= list.titulo %>
+      </p>
+      <p>
+        <%= list.descricao %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <% f = Favorito.where(list_id: list).first %>
+      <%= link_to "Remover", user_list_favorito_delete_path(@user, list, f.id), method: :delete, class: "btn btn-sm btn-default form-control" %>
+    </div>
+  </div>
+<% end %>
