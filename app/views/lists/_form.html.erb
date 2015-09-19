@@ -8,13 +8,12 @@
   </div>
 
   <% @list.items.each do |item| %>
-    <p><%= item.descricao %></p>
+    <%= item.descricao %><%= link_to "deletar", user_list_item_path(@user, @list, item), method: :delete %>
+    <br />
   <% end %>
 
   <div id="lista_tarefas">
-    <%= f.fields_for :items, Item.new do |ff| %>
-      <%= ff.input :descricao, label: "Tarefa da Lista" %>
-    <% end %>
+
   </div>
 
   <p id="adicionar_tarefa">Adicionar Tarefas</p>
@@ -26,13 +25,11 @@
 
 <script>
   $(document).ready(function(){
-    var i = 1;
+    var i = 0;
     $("#adicionar_tarefa").on("click", function(){
-      var clone = $("#list_items_attributes_0_descricao").clone();
-      clone.prop("id", "list_items_attributes_"+i+"_descricao");
-      clone.prop("name", "list[items_attributes]["+i+"][descricao]");
+      var tarefa = "<input id='list_items_attributes_"+i+"_descricao' class='string optional form-control' type='text' name='list[items_attributes]["+i+"][descricao]'>";
       i++;
-      $("#lista_tarefas").append(clone);
+      $("#lista_tarefas").append(tarefa);
     })
   });
 </script>

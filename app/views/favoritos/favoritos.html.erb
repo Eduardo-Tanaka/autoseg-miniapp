@@ -13,6 +13,7 @@
     <div class="col-md-2">
       <% f = Favorito.where(list_id: list).first %>
       <%= link_to "Remover", user_list_favorito_delete_path(@user, list, f.id), method: :delete, class: "btn btn-sm btn-default form-control" %>
+      <%= link_to "Ver Lista", user_list_path(@user, list), class: "btn btn-sm btn-default form-control" %>
     </div>
   </div>
 <% end %>

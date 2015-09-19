@@ -1,3 +1,18 @@
 <%= @list.titulo %>
 <%= @list.descricao %>
-<%= @list.publico %>
+
+<br />
+<% @list.items.each do |item| %>
+<% if item.completed == true %>
+  <p><strike><%= item.descricao %></strike><p><br>
+  <% if @list.user_id == current_user.id %>
+    <%= link_to user_list_item_uncomplete_path(@user, @list, item), method: :patch, class: "btn btn-sm btn-default form-control" do %>uncomplete <% end %>
+  <% end %>
+<% else %>
+  <p><%= item.descricao %><p><br>
+  <% if @list.user_id == current_user.id %>
+    <%= link_to user_list_item_complete_path(@user, @list, item), method: :patch, class: "btn btn-sm btn-default form-control" do %>complete <% end %>
+  <% end %>
+<% end %>
+    <br/>
+<% end %>

@@ -5,10 +5,13 @@ Rails.application.routes.draw do
     get "favoritos", to: "favoritos#favoritos"
     resources :lists do
       post "favorito", to: "favoritos#add_favorito"
-      resources :favoritos do
+      resources :favoritos, only: [:favoritos, :favorito, :delete] do
         delete "delete", to: "favoritos#remove_favorito"
       end
-      resources :items
+      resources :items, only: [:complete, :uncomplete, :destroy] do
+        patch "complete", to: "items#complete"
+        patch "uncomplete", to: "items#uncomplete"
+      end
     end
   end
 

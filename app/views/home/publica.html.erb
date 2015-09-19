@@ -15,6 +15,7 @@
       <% else %>
         <%= link_to "Favorito", user_list_favorito_path(@user, list), method: :post, class: "btn btn-sm btn-default form-control" %>
       <% end %>
+      <%= link_to "Ver Lista", user_list_path(@user, list), class: "btn btn-sm btn-default form-control" %>
     </div>
   </div>
 <% end %>
