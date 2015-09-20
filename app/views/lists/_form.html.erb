@@ -2,9 +2,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :titulo, required: true, autofocus: true %>
-    <%= f.input :descricao, required: true %>
-    <%= f.input :publico %>
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :public %>
   </div>
 
   <% @list.items.each do |item| %>
@@ -27,7 +27,7 @@
   $(document).ready(function(){
     var i = 0;
     $("#adicionar_tarefa").on("click", function(){
-      var tarefa = "<input id='list_items_attributes_"+i+"_descricao' class='string optional form-control' type='text' name='list[items_attributes]["+i+"][descricao]'>";
+      var tarefa = "<input id='list_items_attributes_"+i+"_description' class='string optional form-control' type='text' name='list[items_attributes]["+i+"][description]'>";
       i++;
       $("#lista_tarefas").append(tarefa);
     })

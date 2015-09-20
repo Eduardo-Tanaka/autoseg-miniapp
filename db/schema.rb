@@ -21,22 +21,22 @@ ActiveRecord::Schema.define(version: 20150919211743) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "descricao"
-    t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description", null: false
+    t.integer  "list_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.boolean  "completed"
   end
 
   add_index "items", ["list_id"], name: "index_items_on_list_id"
 
   create_table "lists", force: :cascade do |t|
-    t.string   "titulo"
-    t.text     "descricao"
-    t.boolean  "publico"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.boolean  "public"
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"

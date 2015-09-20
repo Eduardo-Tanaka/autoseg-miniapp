@@ -52,3 +52,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'devise', '~> 3.5.1'
 gem 'simple_form', '~> 3.1.1'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end

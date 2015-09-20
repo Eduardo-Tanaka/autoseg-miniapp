@@ -47,7 +47,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:titulo, :descricao, :publico, items_attributes: [:descricao])
+    params.require(:list).permit(:title, :description, :public, items_attributes: [:description])
   end
 
   def find_list
