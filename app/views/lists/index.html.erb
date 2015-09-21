@@ -1,14 +1,12 @@
+<h1>Minhas Listas</h1>
+<br />
+
 <% @lists.each do |list| %>
   <div class="row">
     <div class="col-md-8">
+      <%= render list %>
       <p>
-        <%= list.titulo %>
-      </p>
-      <p>
-        <%= list.descricao %>
-      </p>
-      <p>
-        <%= list.publico %>
+        Público: <%= list.public ? "Sim" : "Não" %>
       </p>
     </div>
     <div class="col-md-2">

@@ -6,18 +6,18 @@ class ItemsController < ApplicationController
 
   def complete
     @item.completed = true
-    redirect_to user_list_path(params[:user_id], params[:list_id])
+    redirect_to user_list_path(params[:user_id], params[:list_id]), notice: "Lista Atualizada!"
   end
 
   def uncomplete
     @item.completed = false
-    redirect_to user_list_url(params[:user_id], params[:list_id])
+    redirect_to user_list_url(params[:user_id], params[:list_id]), notice: "Lista Atualizada!"
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to edit_user_list_path(params[:user_id], params[:list_id])
+    redirect_to :back, notice: "Tarefa Deletada"
   end
 
   private

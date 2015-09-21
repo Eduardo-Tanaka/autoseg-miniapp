@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to user_lists_path(@user, @list), notice: "Lista Criada!"
     else
-      render :back
+      redirect_to new_user_list_path(@user, @list), alert: "Erro ao Criar Lista!"
     end
   end
 
@@ -35,7 +35,7 @@ class ListsController < ApplicationController
     if @list.update(list_params)
       redirect_to edit_user_list_path(@user, @list), notice: "Lista Atualizada!"
     else
-      render 'edit'
+      redirect_to edit_user_list_path(@user, @list), alert: "Erro ao Atualizar a Lista!"
     end
   end
 

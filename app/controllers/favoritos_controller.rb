@@ -5,13 +5,13 @@ class FavoritosController < ApplicationController
 
   def add_favorito
     favorito = Favorito.create(params.permit(:user_id, :list_id))
-    redirect_to user_favoritos_path(@user), notice: "Lista Adicionada aos Favoritos!"
+    redirect_to :back, notice: "Lista Adicionada aos Favoritos!"
   end
 
   def remove_favorito
     favorito = Favorito.find(params[:favorito_id])
     favorito.destroy
-    redirect_to user_favoritos_path(@user), notice: "Lista Removida dos Favoritos!"
+    redirect_to :back, notice: "Lista Removida dos Favoritos!"
   end
 
   def favoritos

@@ -1,14 +1,10 @@
-<h1>Favoritos</h1>
+<h1>Meus Favoritos</h1>
+<br />
 
 <% @lists.each do |list| %>
   <div class="row">
     <div class="col-md-8">
-      <p>
-        <%= list.title %>
-      </p>
-      <p>
-        <%= list.description %>
-      </p>
+      <%= render list %>
     </div>
     <div class="col-md-2">
       <% f = Favorito.where(list_id: list).first %>
@@ -16,4 +12,5 @@
       <%= link_to "Ver Lista", user_list_path(@user, list), class: "btn btn-sm btn-default form-control" %>
     </div>
   </div>
+  <br />
 <% end %>

@@ -2,13 +2,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title, required: true, autofocus: true %>
-    <%= f.input :description, required: true %>
-    <%= f.input :public %>
+    <%= f.input :title, label: "Título", required: true, autofocus: true %>
+    <%= f.input :description, label: "Descrição", required: true %>
+    <%= f.input :public, label: "Público?" %>
   </div>
 
+  <% if @list.items.any? %>
+    <p class="lead">Tarefas</p>
+  <% end %>
   <% @list.items.each do |item| %>
-    <%= item.descricao %><%= link_to "deletar", user_list_item_path(@user, @list, item), method: :delete %>
+    <%= item.description %>   <%= link_to user_list_item_path(@user, @list, item), method: :delete do %>Deletar <span class="glyphicon glyphicon-trash"></span><%end%>
     <br />
   <% end %>
 
@@ -16,7 +19,7 @@
 
   </div>
 
-  <p id="adicionar_tarefa">Adicionar Tarefas</p>
+  <p id="adicionar_tarefa">Adicionar Tarefas <span class="glyphicon glyphicon-plus"></span></p>
 
   <div class="form-actions">
     <%= f.button :submit, "Salvar" %>
