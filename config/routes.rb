@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :items, only: [:complete, :uncomplete, :destroy] do
         patch "complete", to: "items#complete"
         patch "uncomplete", to: "items#uncomplete"
+        resources :sub_items, only: [:destroy] 
       end
     end
   end

@@ -47,11 +47,11 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:title, :description, :public, items_attributes: [:description])
+    params.require(:list).permit(:title, :description, :public, :item, items_attributes: [:description, :id, sub_items_attributes: [:description]])
   end
 
   def find_list
-    @list = List.includes(:items).find(params[:id])
+    @list = List.includes(:items).includes(items:[:sub_items]).find(params[:id])
   end
 
   def find_user

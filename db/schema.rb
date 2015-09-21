@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919211743) do
+ActiveRecord::Schema.define(version: 20150921181913) do
 
   create_table "favoritos", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20150919211743) do
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
+
+  create_table "sub_items", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "item_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "sub_items", ["item_id"], name: "index_sub_items_on_item_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
