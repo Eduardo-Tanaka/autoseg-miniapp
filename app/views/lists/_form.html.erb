@@ -18,7 +18,7 @@
           </div>
           <div class="col-md-2">
             <label class="form-group">Ação</label>
-            <p><%= link_to user_list_item_path(@user, @list, item), method: :delete do %>Deletar <span class="glyphicon glyphicon-trash"></span><% end %><p>
+            <p><%= link_to user_list_item_path(@user, @list, item), method: :delete, data: { confirm: "Deletar Tarefa?" } do %>Deletar <span class="glyphicon glyphicon-trash"></span><% end %><p>
           </div>
         </div>
         <%= ff.fields_for :sub_items, SubItem.new do |fff| %>
@@ -29,13 +29,13 @@
         <h3>Sub-Tarefas</h3>
         <ol>
           <% item.sub_items.each do |sub| %>
-            <li><%= sub.description %><%= link_to "Deletar",  user_list_item_sub_item_path(@user, @list, item, sub) , method: :delete %></li>
+            <li><%= sub.description %><%= link_to "Deletar", user_list_item_sub_item_path(@user, @list, item, sub) , method: :delete, data: { confirm: "Deletar Sub Tarefa?" } %></li>
           <% end %>
         </ol>
       <% end %>
 
       <div id="lista_sub_tarefas">
-        <p class="adicionar_sub_tarefa">Adicionar Sub Tarefa <span class="glyphicon glyphicon-plus"></span></p>
+        <button type="button" class="adicionar_sub_tarefa">Adicionar Sub Tarefa <span class="glyphicon glyphicon-plus"></span></button>
         <input type="hidden" value='<%= i %>'/>
       </div>
       <br />
@@ -44,7 +44,7 @@
   <% end %>
 
   <input type="hidden" value='<%= i %>' id="size"/>
-  <p id="adicionar_tarefa" class="btn btn-default">Adicionar Tarefas <span class="glyphicon glyphicon-plus"></span></p>
+  <button type="button" id="adicionar_tarefa">Adicionar Tarefas <span class="glyphicon glyphicon-plus"></span></button>
 
   <div id="lista_tarefas">
 

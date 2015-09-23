@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def publica
-    @lists = List.all.where(public: true).where("user_id != ?", current_user)
+    @lists = List.where(public: true).where("user_id != ?", current_user)
   end
 
   private

@@ -15,8 +15,10 @@ class FavoritosController < ApplicationController
   end
 
   def favoritos
-    @lists = List.joins(:favoritos).where("favoritos.user_id = ?", current_user.id)
+    @lists = List.joins(:favoritos).where("favoritos.user_id = ?", current_user.id).recent
   end
+
+  private
 
   def find_user
     @user = User.find(current_user.id) if current_user != nil

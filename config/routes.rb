@@ -8,10 +8,13 @@ Rails.application.routes.draw do
       resources :favoritos, only: [:favoritos, :favorito, :delete] do
         delete "delete", to: "favoritos#remove_favorito"
       end
-      resources :items, only: [:complete, :uncomplete, :destroy] do
+      resources :items, only: [:destroy] do
         patch "complete", to: "items#complete"
         patch "uncomplete", to: "items#uncomplete"
-        resources :sub_items, only: [:destroy] 
+        resources :sub_items, only: [:destroy] do
+          patch "complete", to: "sub_items#complete"
+          patch "uncomplete", to: "sub_items#uncomplete"
+        end
       end
     end
   end

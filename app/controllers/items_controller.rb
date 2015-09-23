@@ -6,18 +6,24 @@ class ItemsController < ApplicationController
 
   def complete
     @item.completed = true
-    redirect_to user_list_path(params[:user_id], params[:list_id]), notice: "Lista Atualizada!"
+    @item.sub_items.each do |sub_item|
+      sub_item.completed = true
+    end
+    redirect
   end
 
   def uncomplete
     @item.completed = false
-    redirect_to user_list_url(params[:user_id], params[:list_id]), notice: "Lista Atualizada!"
+    @item.sub_items.each do |sub_item|
+      sub_item.completed = false
+    end
+    redirect
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to :back, notice: "Tarefa Deletada"
+    redirect
   end
 
   private
@@ -28,5 +34,9 @@ class ItemsController < ApplicationController
 
   def save
     @item.save
+  end
+
+  def redirect
+    redirect_to :back, notice: "Lista Atualizada!"
   end
 end

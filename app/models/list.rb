@@ -8,4 +8,7 @@ class List < ActiveRecord::Base
   has_many :favoritos
 
   validates :title, :description, presence: true
+
+  scope :recent, -> { order("lists.updated_at DESC") }
+  scope :by_user, -> id { where(user_id: id) }
 end

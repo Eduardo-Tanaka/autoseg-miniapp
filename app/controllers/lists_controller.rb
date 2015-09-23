@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.all.where("user_id = ?", current_user.id)
+    @lists = List.by_user(current_user.id).recent
   end
 
   def new
