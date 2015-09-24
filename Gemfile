@@ -56,3 +56,10 @@ gem 'simple_form', '~> 3.1.1'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
+
+gem 'puma', '~> 2.14.0'
+
+group :test do
+  gem 'capybara', '~> 2.5.0'
+  gem 'factory_girl_rails'
+end
