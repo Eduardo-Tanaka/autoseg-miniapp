@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 
-  include ActionController::Live
-
   before_action :find_user
   before_action :authenticate_user!, only: [:publica]
 
