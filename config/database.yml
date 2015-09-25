@@ -25,6 +25,6 @@ production:
   <<: *default
   adapter: postgresql
   host: ec2-54-204-20-164.compute-1.amazonaws.com
-  username: zfmfwwizgaovdh
-  password: oatZ_a7Nwl5L3wF_FFLRv07EB0
-  database: df258nj14m04qf
+  username: gebtmvconkekts
+  password: AQN8vFS3s-rqmZ9qz_1_Wv9Kpm
+  database: deeekqfoeskgcp
